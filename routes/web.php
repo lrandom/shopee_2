@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layout');
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('list', 'Admin\UserController@list');
+        Route::get('add','Admin\UserController@add');
+        Route::post('add','Admin\UserController@add');
+    });
 });
+// /admin/users/list
